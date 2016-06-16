@@ -1,4 +1,7 @@
 import sys, pygame
+from pygame import *
+
+from keyboard import get_direction_to_move
 pygame.init()
 
 size = width, height = 700, 500
@@ -9,6 +12,8 @@ screen = pygame.display.set_mode(size)
 
 ball = pygame.image.load("sample.png")
 ballrect = ball.get_rect()
+
+pygame.key.set_repeat(500, 30)
 
 while True:
     for event in pygame.event.get():
@@ -24,3 +29,5 @@ while True:
     screen.fill(white)
     screen.blit(ball, ballrect)
     pygame.display.flip()
+
+    print get_direction_to_move()
