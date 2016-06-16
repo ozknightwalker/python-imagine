@@ -1,5 +1,6 @@
 import sys, pygame
 from pygame import *
+from stats import *
 
 from keyboard import get_direction_to_move
 pygame.init()
@@ -7,6 +8,9 @@ pygame.init()
 size = width, height = 700, 500
 speed = [2, 2]
 white = 250, 250, 250
+score = 0
+life = 5
+
 
 screen = pygame.display.set_mode(size)
 
@@ -27,6 +31,8 @@ while True:
         speed[1] = -speed[1]
 
     screen.fill(white)
+    render_life(screen, life)
+    render_score(screen, score)
     screen.blit(ball, ballrect)
     pygame.display.flip()
 
