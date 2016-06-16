@@ -56,3 +56,7 @@ def game_over(screen):
     x, y = screen.get_size()
     text = myfont.render("Game Over", 1, black)
     screen.blit(text, ((x / 2.5), (y / 2)))
+    text = myfont.render("\"The best way to find happiness", 1, black)
+    screen.blit(text, ((x / 6), (y / 1.5)))
+    text = myfont.render("is to stop looking so hard\"", 1, black)
+    screen.blit(text, ((x / 3), (y / 1.3)))
