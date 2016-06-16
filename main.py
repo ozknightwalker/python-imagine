@@ -75,7 +75,8 @@ while True:
 
     hit_muppets = pygame.sprite.spritecollide(player, muppet_group, True)
     for mup in hit_muppets:
-        print mup
+        if mup.id != to_hit:
+            life -= 1
     if life == 0:
         break
 
