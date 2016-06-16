@@ -7,6 +7,7 @@ The game score
 Python
 Pygame
 
+
 ~~~Game Mechanics~~~~
 to run the game run `python main.py`
 move = use arrow keys
