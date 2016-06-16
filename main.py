@@ -72,6 +72,8 @@ while True:
     time = datetime.now() - start_time
     t = int(time.total_seconds())
     render_time(screen, t)
+    # Show Endgame
+    # show_endgame(screen, t)
     pygame.display.flip()
 
     hit_muppets = pygame.sprite.spritecollide(player, muppet_group, True)
