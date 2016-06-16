@@ -2,18 +2,18 @@ import sys
 import pygame
 from time import sleep
 from pygame import *
+from datetime import datetime
 
 from stats import *
 from keyboard import get_direction_to_move
 from sprites import PlayerBlock
-pygame.init()
 
 size = width, height = 700, 500
 speed = [2, 2]
 white = 250, 250, 250
 score = 0
 life = 5
-
+time = 0
 
 screen = pygame.display.set_mode(size)
 
@@ -31,6 +31,7 @@ player.rect.y = height / 2
 player_group = pygame.sprite.Group()
 player_group.add(player)
 
+start_time = datetime.now()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -47,4 +48,7 @@ while True:
     player_group.update()
     render_life(screen, life)
     render_score(screen, score)
+    time = datetime.now() - start_time
+    t = int(time.total_seconds())
+    render_time(screen, t)
     pygame.display.flip()
