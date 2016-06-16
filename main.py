@@ -71,4 +71,6 @@ while True:
     time = datetime.now() - start_time
     t = int(time.total_seconds())
     render_time(screen, t)
+    # Show Endgame
+    # show_endgame(screen, t)
     pygame.display.flip()
