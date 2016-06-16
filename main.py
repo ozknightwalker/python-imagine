@@ -6,8 +6,7 @@ from datetime import datetime
 
 from stats import *
 from keyboard import get_direction_to_move
-from sprites import PlayerBlock
-from muppet import Muppet
+from sprites import PlayerBlock, Muppet
 import random
 pygame.init()
 
@@ -33,6 +32,10 @@ ballrect = ball.get_rect()
 
 pygame.key.set_repeat(500, 30)
 
+muppet_group = pygame.sprite.Group()
+while len(muppet_group) < 5:
+    muppet = Muppet(speed_x=random.randint(1, 3), speed_y=random.randint(1, 3), screen_width=width, screen_height=height, width=30, height=30, image="spritesheet.png", coordinates=sprite_coordinates[len(muppet_group)])
+    muppet_group.add(muppet)
 player = PlayerBlock(
     speed=5, screen_width=width, screen_height=height, image="spritesheet.png",
     width=30, height=30, coordinates=sprite_coordinates[0])
@@ -41,8 +44,9 @@ player.rect.y = height / 2
 
 player_group = pygame.sprite.Group()
 player_group.add(player)
-muppet_group = pygame.sprite.Group()
 start_time = datetime.now()
+
+    # muppet_group.update()
 
 while True:
     for event in pygame.event.get():
@@ -55,16 +59,11 @@ while True:
         speed[1] = -speed[1]
     screen.fill(white)
 
+    muppet_group.draw(screen)
+    muppet_group.update()
     player_group.draw(screen)
     player.update_movement(*get_direction_to_move())
     player_group.update()
-    muppet_group.draw(screen)
-    for muppet in muppet_group:
-        muppet.update()
-    while len(muppet_group) < 5:
-        muppet = Muppet(speed_x=random.randint(0, 9), speed_y=random.randint(0, 9), screen_width=width, screen_height=height, image="ball.gif")
-        muppet_group.add(muppet)
-        muppet_group.update()
     render_life(screen, life)
     render_score(screen, score)
     time = datetime.now() - start_time
