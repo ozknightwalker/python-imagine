@@ -55,6 +55,8 @@ mup_to_hit.rect.x = 40
 mup_to_hit.rect.y = 5
 mup_to_hit_group.add(mup_to_hit)
 
+excludes = []
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -85,11 +87,27 @@ while True:
 
     hit_muppets = pygame.sprite.spritecollide(player, muppet_group, True)
     for mup in hit_muppets:
-        print mup
+        if mup.id != to_hit:
+            life -= 1
+            excludes.append(mup.id)
+        else:
+            to_hit += 1
+            while to_hit in excludes:
+                to_hit += 1
+            mup_to_hit = Muppet(speed_x=0, speed_y=0, screen_width=width, screen_height=height, width=25, height=25, image="spritesheet.png", coordinates=sprite_coordinates[to_hit], id=100)
+            mup_to_hit.rect.x = 40
+            mup_to_hit.rect.y = 5
+            mup_to_hit_group.add(mup_to_hit)
+
     if life == 0:
-        print 'GAME OVER'
+        game_over(screen)
+        pygame.display.flip()
+        sleep(0.0166)
         break
 
     if len(muppet_group) == 0:
-        print 'Congrats'
+        # Show Endgame
+        show_endgame(screen, t)
+        pygame.display.flip()
+        sleep(0.0166)
         break
