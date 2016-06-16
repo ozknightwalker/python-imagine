@@ -71,17 +71,16 @@ while True:
     time = datetime.now() - start_time
     t = int(time.total_seconds())
     render_time(screen, t)
-    # Show Endgame
-    # show_endgame(screen, t)
     pygame.display.flip()
 
     hit_muppets = pygame.sprite.spritecollide(player, muppet_group, True)
     for mup in hit_muppets:
         print mup
     if life == 0:
-        print 'GAME OVER'
         break
 
     if len(muppet_group) == 0:
-        print 'Congrats'
+        # Show Endgame
+        show_endgame(screen, t)
+        pygame.display.flip()
         break
