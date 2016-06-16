@@ -1,4 +1,6 @@
-import sys, pygame
+import sys
+import pygame
+from time import sleep
 from pygame import *
 from stats import *
 
@@ -23,7 +25,7 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-
+    sleep(0.0166)
     ballrect = ballrect.move(speed)
     if ballrect.left < 0 or ballrect.right > width:
         speed[0] = -speed[0]
