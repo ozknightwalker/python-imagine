@@ -65,7 +65,7 @@ while True:
     player.update_movement(*get_direction_to_move())
     player_group.update()
     render_life(screen, life)
-    render_score(screen, score)
+    # render_score(screen, score)
     time = datetime.now() - start_time
     t = int(time.total_seconds())
     render_time(screen, t)
