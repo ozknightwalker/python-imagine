@@ -2,6 +2,7 @@ import sys
 import pygame
 from time import sleep
 from pygame import *
+from datetime import datetime
 
 from stats import *
 from keyboard import get_direction_to_move
@@ -15,7 +16,15 @@ speed = [2, 2]
 white = 250, 250, 250
 score = 0
 life = 5
+time = 0
 
+sprite_coordinates=[(10, 20, 95, 120), (100, 20, 95, 120), (200, 20, 95, 120),
+                    (300, 20, 95, 130), (400, 20, 85, 130),
+                    (480, 20, 100, 120), (590, 20, 80, 120),
+                    (10, 150, 95, 110), (110, 150, 90, 110),
+                    (200, 150, 90, 110), (300, 150, 90, 110),
+                    (400, 150, 90, 110), (480, 150, 90, 115),
+                    (580, 150, 90, 115), (10, 260, 95, 120)]
 
 screen = pygame.display.set_mode(size)
 
@@ -24,19 +33,16 @@ ballrect = ball.get_rect()
 
 pygame.key.set_repeat(500, 30)
 
-player = PlayerBlock(speed=5, screen_width=width, screen_height=height, image="sample.png")
+player = PlayerBlock(
+    speed=5, screen_width=width, screen_height=height, image="sample.png",
+    width=30, height=30)
 player.rect.x = width / 2
 player.rect.y = height / 2
 
 player_group = pygame.sprite.Group()
 player_group.add(player)
-
-# muppet = Muppet(speed=5, screen_width=width, screen_height=height, image="ball.gif")
-# muppet.rect.x = random.randrange(width)
-# muppet.rect.y = 0
 muppet_group = pygame.sprite.Group()
-# muppet_group.add(muppet)
-
+start_time = datetime.now()
 
 while True:
     for event in pygame.event.get():
@@ -61,5 +67,7 @@ while True:
         muppet_group.update()
     render_life(screen, life)
     render_score(screen, score)
+    time = datetime.now() - start_time
+    t = int(time.total_seconds())
+    render_time(screen, t)
     pygame.display.flip()
-
