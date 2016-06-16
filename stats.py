@@ -41,3 +41,10 @@ def show_endgame(screen, time):
     x, y = screen.get_size()
     text = myfont.render("Congrats You finished the game in {}!!!".format(time), 1, black)
     screen.blit(text, ((x / 8), (y / 2)))
+
+
+def show_to_hit(screen, group):
+    x = screen.get_size()[0]
+    text = myfont.render('Hit: ', 1, black)
+    screen.blit(text, (0, 10))
+    group.draw(screen)

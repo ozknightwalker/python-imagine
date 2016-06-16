@@ -49,6 +49,11 @@ player_group.add(player)
 start_time = datetime.now()
 
 to_hit = 1
+mup_to_hit_group = pygame.sprite.Group()
+mup_to_hit = Muppet(speed_x=0, speed_y=0, screen_width=width, screen_height=height, width=25, height=25, image="spritesheet.png", coordinates=sprite_coordinates[to_hit], id=100)
+mup_to_hit.rect.x = 40
+mup_to_hit.rect.y = 5
+mup_to_hit_group.add(mup_to_hit)
 
 while True:
     for event in pygame.event.get():
@@ -61,6 +66,8 @@ while True:
         speed[1] = -speed[1]
     screen.fill(white)
 
+    mup_to_hit_group.draw(screen)
+
     muppet_group.draw(screen)
     muppet_group.update()
     player_group.draw(screen)
@@ -71,6 +78,7 @@ while True:
     time = datetime.now() - start_time
     t = int(time.total_seconds())
     render_time(screen, t)
+    show_to_hit(screen, mup_to_hit_group)
     # Show Endgame
     # show_endgame(screen, t)
     pygame.display.flip()
