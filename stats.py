@@ -39,8 +39,10 @@ def show_endgame(screen, time):
     screen.fill(white)
     myfont = pygame.font.SysFont("monospace", 25)
     x, y = screen.get_size()
-    text = myfont.render("Congrats You finished the game in {}".format(time), 1, black)
-    screen.blit(text, ((x / 8), (y / 2)))
+    text = myfont.render("Congrats You finished the game in", 1, black)
+    screen.blit(text, ((x / 12), (y / 2)))
+    text = myfont.render("{} second/s".format(time), 1, black)
+    screen.blit(text, ((x / 2.5), (y / 1.5)))
 
 
 def show_to_hit(screen, group):
