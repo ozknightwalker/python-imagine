@@ -95,10 +95,12 @@ while True:
             while to_hit in excludes:
                 to_hit += 1
 
-            mup_to_hit = Muppet(speed_x=0, speed_y=0, screen_width=width, screen_height=height, width=25, height=25, image="spritesheet.png", coordinates=sprite_coordinates[to_hit], id=100)
-            mup_to_hit.rect.x = 40
-            mup_to_hit.rect.y = 5
-            mup_to_hit_group.add(mup_to_hit)
+            if to_hit < 15:
+                mup_to_hit = Muppet(speed_x=0, speed_y=0, screen_width=width, screen_height=height, width=25, height=25, image="spritesheet.png", coordinates=sprite_coordinates[to_hit], id=100)
+                mup_to_hit.rect.x = 40
+                mup_to_hit.rect.y = 5
+                mup_to_hit_group.empty()
+                mup_to_hit_group.add(mup_to_hit)
 
     if life == 0:
         game_over(screen)
