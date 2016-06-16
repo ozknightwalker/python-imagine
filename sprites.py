@@ -2,10 +2,11 @@ import pygame
 
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, image):
+    def __init__(self, image, width, height):
         print image
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(image)
+        self.image = pygame.transform.scale(self.image, (width, height))
         self.rect = self.image.get_rect()
 
 
