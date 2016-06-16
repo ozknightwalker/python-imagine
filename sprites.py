@@ -20,8 +20,8 @@ class PlayerBlock(Block):
         self.base_speed = speed
         self.x_speed = 0
         self.y_speed = 0
-        self.screen_width = screen_width
-        self.screen_height = screen_height
+        self.screen_width = screen_width - kwargs['width']
+        self.screen_height = screen_height - kwargs['height']
 
     def update_movement(self, x_dir, y_dir):
         self.x_speed = x_dir * self.base_speed
