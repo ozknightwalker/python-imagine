@@ -33,12 +33,11 @@ ballrect = ball.get_rect()
 pygame.key.set_repeat(500, 30)
 
 muppet_group = pygame.sprite.Group()
-while len(muppet_group) < 14:
-    muppet = Muppet(speed_x=random.randint(1, 3), speed_y=random.randint(1, 3),
-    screen_width=width, screen_height=height, width=30, height=30,
-    image="spritesheet.png",
-    coordinates=sprite_coordinates[len(muppet_group)+1])
+
+for i in xrange(1, 15):
+    muppet = Muppet(speed_x=random.randint(1, 3), speed_y=random.randint(1, 3), screen_width=width, screen_height=height, width=30, height=30, image="spritesheet.png", coordinates=sprite_coordinates[len(muppet_group)+1], id=i)
     muppet_group.add(muppet)
+
 player = PlayerBlock(
     speed=5, screen_width=width, screen_height=height, image="spritesheet.png",
     width=30, height=30, coordinates=sprite_coordinates[0])

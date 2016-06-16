@@ -6,7 +6,6 @@ from spritesheet import Spritesheet
 
 class Block(pygame.sprite.Sprite):
     def __init__(self, image, width, height, coordinates):
-        print image
         pygame.sprite.Sprite.__init__(self)
         sheet = Spritesheet(image)
         self.image = sheet.get_image(coordinates)
@@ -39,8 +38,9 @@ class PlayerBlock(Block):
 
 class Muppet(Block):
 
-    def __init__(self, speed_x, speed_y, screen_width, screen_height, *args, **kwargs):
+    def __init__(self, id, speed_x, speed_y, screen_width, screen_height, *args, **kwargs):
         super(Muppet, self).__init__(*args, **kwargs)
+        self.id = id
         self.x_speed = speed_x
         self.y_speed = speed_y
         self.screen_width = screen_width
