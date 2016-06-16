@@ -78,10 +78,14 @@ while True:
         if mup.id != to_hit:
             life -= 1
     if life == 0:
+        game_over(screen)
+        pygame.display.flip()
+        sleep(0.0166)
         break
 
     if len(muppet_group) == 0:
         # Show Endgame
         show_endgame(screen, t)
         pygame.display.flip()
+        sleep(0.0166)
         break
