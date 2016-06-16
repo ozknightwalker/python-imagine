@@ -31,8 +31,8 @@ ballrect = ball.get_rect()
 pygame.key.set_repeat(500, 30)
 
 player = PlayerBlock(
-    speed=5, screen_width=width, screen_height=height, image="sample.png",
-    width=30, height=30)
+    speed=5, screen_width=width, screen_height=height, image="spritesheet.png",
+    width=30, height=30, coordinates=sprite_coordinates[0])
 player.rect.x = width / 2
 player.rect.y = height / 2
 

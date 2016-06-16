@@ -1,11 +1,13 @@
 import pygame
 
+from spritesheet import Spritesheet
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, image, width, height):
+    def __init__(self, image, width, height, coordinates):
         print image
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(image)
+        sheet = Spritesheet(image)
+        self.image = sheet.get_image(coordinates)
         self.image = pygame.transform.scale(self.image, (width, height))
         self.rect = self.image.get_rect()
 
